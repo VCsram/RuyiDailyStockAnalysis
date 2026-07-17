@@ -256,11 +256,17 @@ describe('HomePage', () => {
 
     const dashboard = await screen.findByTestId('home-dashboard');
     expect(dashboard).toBeInTheDocument();
-    expect(dashboard.className).toContain('h-[calc(100vh-5rem)]');
-    expect(dashboard.className).toContain('lg:h-[calc(100vh-2rem)]');
+    expect(dashboard.className).toContain('h-full');
+    expect(dashboard.className).toContain('min-h-0');
+    expect(dashboard.className).toContain('overflow-hidden');
     expect(dashboard.firstElementChild?.className).toContain('min-h-0');
-    expect(dashboard.querySelector('.flex-1.flex.min-h-0.overflow-hidden')).toBeTruthy();
-    expect(screen.getByTestId('home-dashboard-scroll')).toBeInTheDocument();
+    expect(dashboard.firstElementChild?.className).toContain('min-w-0');
+    expect(dashboard.querySelector('.flex.min-h-0.min-w-0.flex-1.overflow-hidden')).toBeTruthy();
+    expect(screen.getByTestId('home-task-sidebar')).toHaveClass('w-72');
+    const scrollRegion = screen.getByTestId('home-dashboard-scroll');
+    expect(scrollRegion).toBeInTheDocument();
+    expect(scrollRegion.className).toContain('overflow-y-auto');
+    expect(scrollRegion.className).toContain('overflow-x-hidden');
     expect(screen.getByPlaceholderText('输入股票代码或名称，如 600519、贵州茅台、AAPL')).toBeInTheDocument();
     expect(await screen.findByText('趋势维持强势')).toBeInTheDocument();
     expect(

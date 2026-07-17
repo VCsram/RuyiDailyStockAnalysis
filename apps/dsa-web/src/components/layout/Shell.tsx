@@ -19,19 +19,14 @@ const SIDEBAR_COLLAPSED_KEY = 'dsa.shell.sidebarCollapsed';
 
 export const Shell: React.FC<ShellProps> = ({ children }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
-  const { t } = useUiLanguage();
-
-  useEffect(() => {
+  const [collapsed, setCollapsed] = useState(() => {
     try {
-      const raw = localStorage.getItem(SIDEBAR_COLLAPSED_KEY);
-      if (raw === '1') {
-        setCollapsed(true);
-      }
+      return localStorage.getItem(SIDEBAR_COLLAPSED_KEY) === '1';
     } catch {
-      // ignore storage failures
+      return false;
     }
-  }, []);
+  });
+  const { t } = useUiLanguage();
 
   useEffect(() => {
     try {
@@ -59,9 +54,12 @@ export const Shell: React.FC<ShellProps> = ({ children }) => {
   }, [mobileOpen]);
 
   return (
-    <div className="min-h-screen w-full bg-background text-foreground">
-      {/* Mobile top bar: menu + brand */}
-      <div className="fixed inset-x-0 top-0 z-40 flex h-12 items-center justify-between gap-2 border-b border-border/60 bg-background/90 px-3 backdrop-blur-md lg:hidden">
+    <div
+      data-testid="app-shell"
+      className="app-shell-ruyi flex h-dvh w-full flex-col overflow-hidden text-foreground"
+    >
+      {/* Mobile top bar: menu + brand — 桌面不占位；移动端 48px */}
+      <div className="flex h-12 shrink-0 items-center justify-between gap-2 border-b border-border/60 bg-background/90 px-3 backdrop-blur-md lg:hidden">
         <div className="flex min-w-0 items-center gap-2">
           <button
             type="button"
@@ -79,23 +77,27 @@ export const Shell: React.FC<ShellProps> = ({ children }) => {
         </div>
       </div>
 
-      <div className="flex min-h-screen w-full">
+      <div className="flex min-h-0 min-w-0 flex-1 overflow-hidden">
         <aside
+          data-testid="app-shell-nav"
           className={cn(
-            'sticky top-0 z-40 hidden h-screen shrink-0 flex-col overflow-visible border-r border-[var(--shell-sidebar-border)] bg-card/80 p-3 backdrop-blur-sm transition-[width] duration-200 lg:flex',
-            collapsed ? 'w-[76px]' : 'w-[248px]'
+            'z-40 hidden h-full shrink-0 flex-col overflow-hidden border-r border-[var(--shell-sidebar-border)] bg-card/80 p-3 backdrop-blur-sm transition-[width] duration-200 lg:flex',
+            collapsed ? 'w-16' : 'w-[136px]'
           )}
           aria-label={t('layout.desktopSidebar')}
         >
           <SidebarNav
             collapsed={collapsed}
-            variant={collapsed ? 'rail' : 'default'}
+            variant="rail"
             onNavigate={() => setMobileOpen(false)}
             onToggleCollapse={() => setCollapsed((value) => !value)}
           />
         </aside>
 
-        <main className="min-h-screen min-w-0 flex-1 pt-12 lg:pt-0 touch-pan-y">
+        <main
+          data-testid="app-shell-main"
+          className="flex h-full min-h-0 min-w-0 flex-1 flex-col overflow-x-hidden overflow-y-auto touch-pan-y"
+        >
           {children ?? <Outlet />}
         </main>
       </div>

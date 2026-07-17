@@ -75,6 +75,8 @@ export const BrandMark: React.FC<BrandMarkProps> = ({
   );
 };
 
+// Shared path constants live beside the component for consumers/tests.
+// eslint-disable-next-line react-refresh/only-export-components -- asset path map, not a component
 export const brandAssetPaths = {
   icon: ICON_SRC,
   logoLight: LOGO_LIGHT_SRC,

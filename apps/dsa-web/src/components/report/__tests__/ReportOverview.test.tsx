@@ -19,6 +19,15 @@ const baseSummary = {
 };
 
 describe('ReportOverview', () => {
+  it('uses adaptive main column plus 18rem metrics rail on wide screens', () => {
+    render(<ReportOverview meta={baseMeta} summary={baseSummary} />);
+
+    const layout = screen.getByTestId('report-overview-layout');
+    expect(layout.className).toContain('grid-cols-1');
+    expect(layout.className).toContain('lg:grid-cols-[minmax(0,1fr)_18rem]');
+    expect(layout.className).not.toContain('lg:grid-cols-3');
+  });
+
   it('renders final market phase and partial-bar labels from report metadata', () => {
     render(
       <ReportOverview

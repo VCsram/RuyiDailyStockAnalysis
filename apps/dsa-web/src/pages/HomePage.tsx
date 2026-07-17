@@ -1267,10 +1267,10 @@ const HomePage: React.FC = () => {
   return (
     <div
       data-testid="home-dashboard"
-      className="flex h-[calc(100vh-3rem)] w-full flex-col overflow-hidden md:flex-row lg:h-screen"
+      className="flex h-full min-h-0 w-full min-w-0 flex-col overflow-hidden"
     >
-      <div className="flex min-h-0 min-w-0 w-full max-w-none flex-1 flex-col">
-        <header className="relative z-30 flex min-w-0 flex-shrink-0 items-center overflow-visible px-3 py-3 md:px-4 md:py-4">
+      <div className="flex h-full min-h-0 min-w-0 w-full max-w-none flex-1 flex-col overflow-hidden">
+        <header className="relative z-30 flex min-h-16 min-w-0 shrink-0 items-center overflow-visible px-3 py-2 md:h-16 md:px-4 md:py-0">
           <div className="flex min-w-0 flex-1 flex-col gap-2.5 md:flex-row md:items-center">
             <div className="flex min-w-0 flex-1 items-center gap-2.5">
               <button
@@ -1447,8 +1447,11 @@ const HomePage: React.FC = () => {
           </div>
         ) : null}
 
-        <div className="flex-1 flex min-h-0 overflow-hidden">
-          <div className="hidden min-h-0 w-64 shrink-0 flex-col overflow-hidden pl-3 pb-4 md:flex lg:w-72 xl:w-80">
+        <div className="flex min-h-0 min-w-0 flex-1 overflow-hidden">
+          <div
+            data-testid="home-task-sidebar"
+            className="hidden h-full min-h-0 w-72 shrink-0 flex-col overflow-hidden pl-3 pb-4 md:flex"
+          >
             {sidebarContent}
           </div>
 
@@ -1467,7 +1470,7 @@ const HomePage: React.FC = () => {
           <section
             ref={dashboardScrollRef}
             data-testid="home-dashboard-scroll"
-            className="flex-1 min-w-0 min-h-0 overflow-x-auto overflow-y-auto px-3 pb-4 md:px-4 lg:px-5 xl:px-6 touch-pan-y"
+            className="min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto px-3 pb-4 touch-pan-y md:px-4 lg:px-5 xl:px-6"
           >
             {marketReviewNotice ? (
               <div className="mb-3">

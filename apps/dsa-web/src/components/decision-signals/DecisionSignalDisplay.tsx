@@ -105,13 +105,40 @@ function formatEntryRange(item: DecisionSignalItem): string {
 
 function formatJsonish(value: unknown): string | null {
   if (value === null || value === undefined) return null;
-  if (typeof value === 'string') return value.trim() || null;
   if (typeof value === 'number' || typeof value === 'boolean') return String(value);
-  try {
-    return JSON.stringify(value);
-  } catch {
-    return String(value);
+
+  if (typeof value === 'string') {
+    const trimmed = value.trim();
+    if (!trimmed) return null;
+    if (
+      (trimmed.startsWith('[') && trimmed.endsWith(']'))
+      || (trimmed.startsWith('{') && trimmed.endsWith('}'))
+    ) {
+      try {
+        return formatJsonish(JSON.parse(trimmed));
+      } catch {
+        return trimmed;
+      }
+    }
+    return trimmed;
   }
+
+  if (Array.isArray(value)) {
+    const parts = value
+      .map((item) => formatJsonish(item))
+      .filter((item): item is string => Boolean(item));
+    return parts.length > 0 ? parts.join('\n') : null;
+  }
+
+  if (typeof value === 'object') {
+    try {
+      return JSON.stringify(value, null, 2);
+    } catch {
+      return String(value);
+    }
+  }
+
+  return String(value);
 }
 
 function asJsonViewerData(value: unknown): Record<string, unknown> | unknown[] | null {
@@ -265,11 +292,11 @@ export const DecisionSignalCard: React.FC<DecisionSignalCardProps> = ({ item, on
       ) : null}
 
       <div className="mt-3 grid gap-2">
-        <SignalTextBlock label={t('decisionSignals.reason')} value={item.reason} />
-        <SignalTextBlock label={t('decisionSignals.catalystSummary')} value={item.catalystSummary} tone="info" />
-        <SignalTextBlock label={t('decisionSignals.watchConditions')} value={item.watchConditions} />
-        <SignalTextBlock label={t('decisionSignals.riskSummary')} value={item.riskSummary} tone="warning" />
-        <SignalTextBlock label={t('decisionSignals.invalidation')} value={item.invalidation} tone="danger" />
+        <SignalTextBlock label={t('decisionSignals.reason')} value={formatJsonish(item.reason)} />
+        <SignalTextBlock label={t('decisionSignals.catalystSummary')} value={formatJsonish(item.catalystSummary)} tone="info" />
+        <SignalTextBlock label={t('decisionSignals.watchConditions')} value={formatJsonish(item.watchConditions)} />
+        <SignalTextBlock label={t('decisionSignals.riskSummary')} value={formatJsonish(item.riskSummary)} tone="warning" />
+        <SignalTextBlock label={t('decisionSignals.invalidation')} value={formatJsonish(item.invalidation)} tone="danger" />
       </div>
 
       <div className="mt-3 flex flex-wrap gap-2 text-xs text-muted-text">
@@ -495,14 +522,16 @@ export const PortfolioSignalSummary: React.FC<PortfolioSignalSummaryProps> = ({ 
     return <span className="text-xs text-muted-text">{t('decisionSignals.portfolioEmpty')}</span>;
   }
   const actionLabel = getActionLabel(item, t);
+  const riskSummary = formatJsonish(item.riskSummary);
+  const watchConditions = formatJsonish(item.watchConditions);
   return (
     <div className="min-w-[11rem] max-w-[18rem] text-left">
       <div className="flex flex-wrap items-center justify-end gap-1.5">
         <Badge variant={getActionVariant(item)}>{actionLabel}</Badge>
         {item.horizon ? <span className="text-[11px] text-secondary-text">{getDecisionSignalHorizonLabel(item.horizon, t)}</span> : null}
       </div>
-      {item.riskSummary ? <p className="mt-1 line-clamp-2 text-[11px] text-warning">{item.riskSummary}</p> : null}
-      {item.watchConditions ? <p className="mt-1 line-clamp-2 text-[11px] text-secondary-text">{item.watchConditions}</p> : null}
+      {riskSummary ? <p className="mt-1 line-clamp-2 whitespace-pre-line text-[11px] text-warning">{riskSummary}</p> : null}
+      {watchConditions ? <p className="mt-1 line-clamp-2 whitespace-pre-line text-[11px] text-secondary-text">{watchConditions}</p> : null}
     </div>
   );
 };

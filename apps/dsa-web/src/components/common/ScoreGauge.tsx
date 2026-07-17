@@ -95,26 +95,26 @@ export const ScoreGauge: React.FC<ScoreGaugeProps> = ({
   const arcLength = circumference * 0.75;
   const progress = (animatedScore / 100) * arcLength;
 
-  // Sentiment colors - dynamically computed based on score thresholds.
+  // Sentiment colors — 如意国风：青花蓝 / 哑光金 / 朱砂红
   // Light theme uses a restrained glow; dark theme keeps the stronger terminal-style glow.
   const sentimentConfig = {
     greed: {
-      color: '#00d4ff',       // Cyan
-      glowFilter: 'rgba(0, 212, 255, 0.66)',
-      lightColor: '#22d3ee',  // Lighter cyan
-      lightEndColor: '#0891b2', // Darker cyan
+      color: '#3aa0d8',       // 青花瓷蓝
+      glowFilter: 'rgba(58, 160, 216, 0.66)',
+      lightColor: '#5bb8e6',
+      lightEndColor: '#1d6f9c',
     },
     neutral: {
-      color: '#a855f7',       // Purple
-      glowFilter: 'rgba(168, 85, 247, 0.66)',
-      lightColor: '#c084fc',  // Lighter purple
-      lightEndColor: '#9333ea', // Darker purple
+      color: '#c4a35a',       // 哑光金
+      glowFilter: 'rgba(196, 163, 90, 0.66)',
+      lightColor: '#d4b76e',
+      lightEndColor: '#8f7340',
     },
     fear: {
-      color: '#ff4466',       // Red
-      glowFilter: 'rgba(255, 68, 102, 0.66)',
-      lightColor: '#fb7185',  // Lighter rose
-      lightEndColor: '#e11d48', // Darker rose
+      color: '#c94a3d',       // 朱砂红
+      glowFilter: 'rgba(201, 74, 61, 0.66)',
+      lightColor: '#e06a5c',
+      lightEndColor: '#9a2f26',
     },
   };
 

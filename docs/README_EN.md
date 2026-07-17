@@ -37,8 +37,23 @@ English | [简体中文](../README.md) | [繁體中文](README_CHT.md)
 ## 🖥️ Product Preview
 
 <p align="center">
-  <img src="assets/readme_workspace_tour_20260510.gif" alt="DSA Web workspace demo" width="720">
+  <img src="assets/readme_workspace_tour_20260510.gif" alt="RuyiDailyStockAnalysis Web workspace demo" width="720">
 </p>
+
+| Home | Login / Brand |
+|:---:|:---:|
+| <img src="assets/readme/01_home.png" alt="Home" width="420"> | <img src="assets/readme/02_login.png" alt="Login" width="420"> |
+
+| AI Suggestions | Agent Chat |
+|:---:|:---:|
+| <img src="assets/readme/03_decision_signals.png" alt="AI suggestions" width="420"> | <img src="assets/readme/04_chat.png" alt="Agent chat" width="420"> |
+
+| Settings | Portfolio |
+|:---:|:---:|
+| <img src="assets/readme/05_settings.png" alt="Settings" width="420"> | <img src="assets/readme/06_portfolio.png" alt="Portfolio" width="420"> |
+
+More screenshots (alerts / backtest / screening) are in [`assets/readme/`](./assets/readme/). Desktop installer notes: see Chinese [README](../README.md#-桌面端-v100) and [desktop-package.md](./desktop-package.md).
+
 
 ## ✨ Key Features
 

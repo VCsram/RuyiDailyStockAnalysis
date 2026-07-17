@@ -223,6 +223,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({
           <button
             type="button"
             onClick={() => setShowLogoutConfirm(true)}
+            aria-label={t('layout.logout')}
             className={itemInteractiveClass}
           >
             <LogOut className={itemIconClass} />

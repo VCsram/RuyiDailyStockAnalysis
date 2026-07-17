@@ -243,11 +243,14 @@ export const ReportOverview: React.FC<ReportOverviewProps> = ({
   );
 
   return (
-    <div className="space-y-5">
-      {/* 主信息区 - 两列布局 */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-start">
+    <div className="min-w-0 space-y-5">
+      {/* 主信息区：宽屏主区自适应 + 18rem 指标栏，窄屏自动堆叠 */}
+      <div
+        data-testid="report-overview-layout"
+        className="grid grid-cols-1 items-start gap-5 lg:grid-cols-[minmax(0,1fr)_18rem]"
+      >
         {/* 左侧：股票信息与结论 */}
-        <div className="lg:col-span-2 space-y-5">
+        <div className="min-w-0 space-y-5">
           {/* 股票头部 */}
           <Card variant="gradient" padding="md" className="home-report-hero">
             <div className="flex items-start justify-between mb-5">
@@ -366,7 +369,7 @@ export const ReportOverview: React.FC<ReportOverviewProps> = ({
         </div>
 
         {/* 右侧：情绪指标 / 自选操作 */}
-        <div className="flex flex-col space-y-4">
+        <div className="flex min-w-0 flex-col space-y-4 lg:w-[18rem]">
           {watchlist && meta.reportType !== 'market_review' && (
             <Card variant="bordered" padding="sm" className="home-panel-card">
               <div className="text-center space-y-3">

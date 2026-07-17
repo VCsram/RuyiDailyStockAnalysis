@@ -11,7 +11,7 @@ const NotFoundPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center text-center px-4">
+    <div className="flex min-h-full flex-col items-center justify-center px-4 py-12 text-center">
       {/* 404 */}
       <div className="relative mb-8">
         <span 

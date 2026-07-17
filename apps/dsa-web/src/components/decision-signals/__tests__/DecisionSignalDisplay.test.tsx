@@ -76,6 +76,27 @@ describe('DecisionSignalCard', () => {
     expect(screen.queryByRole('button', { name: '查看 贵州茅台 AI 建议详情' })).not.toBeInTheDocument();
   });
 
+  it('renders JSON-encoded list fields as readable multi-line text', () => {
+    window.localStorage.setItem('dsa.uiLanguage', 'zh');
+    render(
+      <UiLanguageProvider>
+        <DecisionSignalCard
+          item={{
+            ...signal,
+            catalystSummary: '["催化一","催化二"]',
+            watchConditions: '["观察条件一","观察条件二"]',
+            riskSummary: '["风险一","风险二"]',
+          }}
+        />
+      </UiLanguageProvider>,
+    );
+
+    expect(screen.getByText(/催化一/)).toBeInTheDocument();
+    expect(screen.getByText(/观察条件一/)).toBeInTheDocument();
+    expect(screen.getByText(/风险一/)).toBeInTheDocument();
+    expect(screen.queryByText(/\["催化一"/)).not.toBeInTheDocument();
+  });
+
   it('hides missing optional plan text for sparse legacy signals', () => {
     window.localStorage.setItem('dsa.uiLanguage', 'zh');
     render(

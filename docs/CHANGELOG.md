@@ -9,9 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+- [文档] 重写 README：如意品牌、多页截图画廊、桌面端 v1.0.0 安装说明，并同步英文 README 预览区。
+- [chore] 桌面端发布版本号调整为 `1.0.0`，并重新产出 Windows 安装包。
+- [修复] AI 建议卡片/详情对 JSON 数组字符串（观察条件、风险、催化）做可读化展开，避免直接显示 `["..."]` 原文。
+- [修复] Web 壳层主内容区改为可纵向滚动，修复 100% 缩放下设置/持仓/告警等页面内容被裁切且无法滚动；问股页对齐 `h-full` 高度链，首页移动端顶栏改为自适应高度。
 - [改进] 新增原创 VI：如意弧 + 上升折线 + AI 节点；落地 `docs/assets/dsa_vi/` 与 Web `public/brand/`，并接入 `BrandMark`（侧栏 / 登录 / favicon）。
 - [改进] 用户可见品牌统一为「如意金股 / RuyiDailyStockAnalysis」，作者展示为 creeper；覆盖 Web 首页/登录/侧栏、浏览器标题与图标、API 展示信息、通知默认文案、README 中英文与桌面启动页。
-- [改进] Web 前端改为宽屏占满布局。
+- [改进] Web 接入国风山水网页背景图（`public/brand/page-bg.png`），全局固定铺满并叠加可读性遮罩。
+- [改进] Web 视觉升级为「如意国风科技蓝」：深邃科技蓝/青花瓷蓝主色，哑光金与朱砂红点缀，并强化毛玻璃、云纹窗棂暗纹与柔和霓虹光效。
+- [改进] Web 前端改为宽屏占满布局：壳层 `h-dvh` 无固定画布宽度，主导航 136px、首页顶栏 64px、任务/自选栏 288px，报告区纵向滚动且宽屏采用 `minmax(0,1fr) + 18rem`。
 - [文档] 新增 `docs/数据源/Tushare 接口文档.md` 与 `docs/数据源/Tushare 在本项目的应用.md`，并补充课程示例 `examples/北科大2026/06_tushare的综合应用.py`。
 - [新功能] Windows 本地新增根目录 `start.bat` / `stop.bat`：一键后台启动 `--serve-only`（复用已占用 8000、等待健康检查后打开浏览器）与一键停止。
 - [测试] 新增 Web 全页面 Playwright 验收：统一检查路由、核心元素、控制台、页面异常与失败 API，并在通过后输出脱敏截图及 JSON 报告

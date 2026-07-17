@@ -35,6 +35,37 @@ beforeAll(() => {
 });
 
 describe('Shell', () => {
+  it('uses full-viewport shell without fixed canvas width', () => {
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <ThemeProvider>
+          <Shell>
+            <div>page content</div>
+          </Shell>
+        </ThemeProvider>
+      </MemoryRouter>
+    );
+
+    const shell = screen.getByTestId('app-shell');
+    expect(shell.className).toContain('h-dvh');
+    expect(shell.className).toContain('w-full');
+    expect(shell.className).toContain('overflow-hidden');
+    expect(shell.className).toContain('app-shell-ruyi');
+    expect(shell.className).not.toContain('max-w-[1680px]');
+    expect(shell.className).not.toContain('mx-auto');
+
+    const nav = screen.getByTestId('app-shell-nav');
+    expect(nav.className).toContain('w-[136px]');
+
+    const main = screen.getByTestId('app-shell-main');
+    expect(main.className).toContain('min-h-0');
+    expect(main.className).toContain('min-w-0');
+    expect(main.className).toContain('overflow-y-auto');
+    expect(main.className).toContain('overflow-x-hidden');
+    expect(main.className.split(/\s+/)).not.toContain('overflow-hidden');
+    expect(screen.getByText('page content')).toBeInTheDocument();
+  });
+
   it.skip('renders navigation, theme toggle and completion badge', () => {
     render(
       <MemoryRouter initialEntries={['/chat']}>
