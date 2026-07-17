@@ -1,0 +1,19 @@
+=== Tushare 综合应用报告 ===
+时间: 2026-07-17T09:37:41
+Token: e2a2...fecd (len=56)
+标的: 600519.SH
+日线区间条数: 10
+最新交易日: 20260716 收盘=1258.99 涨跌幅%=0.6339
+
+步骤结果:
+  - daily(600519.SH): OK rows=10 -> tushare_综合_日线.csv
+  - stock_basic: SKIP (抱歉，您访问接口(stock_basic)频率超限(1次/分钟)，具体频次详情：https://tushare.pro/document/1?doc_id=108。)
+  - trade_cal: OK rows=1
+  - daily_basic: OK rows=1
+
+输出文件:
+  - D:\tmp\RuyiDailyStockAnalysis_v0.1.0\examples\北科大2026\tushare_综合_日线.csv
+  - (基础信息未生成)
+  - D:\tmp\RuyiDailyStockAnalysis_v0.1.0\examples\北科大2026\tushare_综合_报告.txt
+
+说明: 积分是权限门槛而非按次扣减；stock_basic 低积分账号可能有小时级频次限制。

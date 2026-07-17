@@ -10,6 +10,8 @@ import { isParsedApiError } from '../api/error';
 import { useAuth } from '../hooks';
 import { useUiLanguage } from '../contexts/UiLanguageContext';
 import { SettingsAlert } from '../components/settings';
+import { BrandMark } from '../components/brand/BrandMark';
+import { BRAND_AUTHOR, BRAND_EN, BRAND_ZH } from '../brand';
 
 const LoginPage: React.FC = () => {
   const { login, passwordSet, setupState } = useAuth();
@@ -122,21 +124,14 @@ const LoginPage: React.FC = () => {
           </motion.div>
 
           <div className="mt-8 flex flex-col items-center">
-            <img
-              src="/ruyi-logo.png"
-              alt="如意金股"
-              className="mb-4 h-20 w-20 rounded-2xl shadow-[0_0_40px_rgba(34,197,94,0.35)]"
-              draggable={false}
+            <BrandMark
+              layout="horizontal"
+              size="xl"
+              forceTheme="dark"
+              className="mb-2 max-w-[min(100%,440px)] drop-shadow-[0_0_40px_rgba(34,197,94,0.28)]"
+              alt={`${BRAND_ZH} ${BRAND_EN}`}
             />
-            <h2 className="text-4xl font-extrabold tracking-tighter text-[var(--login-text-primary)] sm:text-6xl">
-              <span className="bg-gradient-to-r from-emerald-300 via-lime-300 to-emerald-500 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(34,197,94,0.45)]">
-                如意金股
-              </span>
-            </h2>
-            <h3 className="mt-1 text-sm font-semibold tracking-[0.2em] text-[var(--login-text-muted)]">
-              RuyiDailyStockAnalysis
-            </h3>
-            <p className="mt-2 text-xs text-[var(--login-text-muted)]">Author · creeper</p>
+            <p className="mt-2 text-xs text-[var(--login-text-muted)]">Author · {BRAND_AUTHOR}</p>
           </div>
 
           <motion.div 

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>步骤2 · gitignore 与 .env 配置</title>
+  <style>
+    body { font-family: "Segoe UI", "Microsoft YaHei", sans-serif; background:#0b1220; color:#e5e7eb; margin:0; }
+    .card { max-width:860px; margin:40px auto; padding:28px; background:#111827; border-radius:16px; border:1px solid #334155; }
+    h1 { color:#93c5fd; margin-top:0; }
+    pre { background:#020617; color:#bbf7d0; padding:16px; border-radius:12px; overflow:auto; }
+    .tag { display:inline-block; background:#1d4ed8; color:white; padding:4px 10px; border-radius:999px; font-size:12px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="tag">STEP 2</div>
+    <h1>.gitignore 防泄漏 + .env 配置</h1>
+    <h3>1) .gitignore 新增</h3>
+    <pre>/key.txt
+/key.*.txt</pre>
+    <h3>2) 按 .env.example 写入（值已脱敏）</h3>
+    <pre>DEEPSEEK_API_KEY=&lt;from key.txt&gt;
+LITELLM_MODEL=deepseek/deepseek-v4-pro
+AGENT_LITELLM_MODEL=deepseek/deepseek-v4-pro
+GENERATION_BACKEND=litellm
+
+# 说明：未启用 LLM_CHANNELS，避免与单 Key 模式冲突</pre>
+    <p>配置依据：<code>docs/LLM_CONFIG_GUIDE.md</code>、<code>.env.example</code> DeepSeek 段。</p>
+  </div>
+</body>
+</html>

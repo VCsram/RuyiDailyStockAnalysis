@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+- [改进] 新增原创 VI：如意弧 + 上升折线 + AI 节点；落地 `docs/assets/dsa_vi/` 与 Web `public/brand/`，并接入 `BrandMark`（侧栏 / 登录 / favicon）。
 - [改进] 用户可见品牌统一为「如意金股 / RuyiDailyStockAnalysis」，作者展示为 creeper；覆盖 Web 首页/登录/侧栏、浏览器标题与图标、API 展示信息、通知默认文案、README 中英文与桌面启动页。
 - [改进] Web 前端改为宽屏占满布局。
 - [文档] 新增 `docs/数据源/Tushare 接口文档.md` 与 `docs/数据源/Tushare 在本项目的应用.md`，并补充课程示例 `examples/北科大2026/06_tushare的综合应用.py`。

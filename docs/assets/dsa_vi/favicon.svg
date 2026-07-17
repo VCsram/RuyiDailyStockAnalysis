@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="如意金股">
+  <title>如意金股 Icon</title>
+  <rect x="32" y="32" width="448" height="448" rx="112" fill="#059669"/>
+  <!-- Ruyi arc -->
+  <path d="M148 360 C148 250 210 210 268 210 C310 210 334 236 334 274 C334 320 286 334 248 318"
+        fill="none" stroke="#FFFFFF" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M248 318 C210 300 188 318 188 352 C188 392 230 412 278 392"
+        fill="none" stroke="#FFFFFF" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Rising quant line -->
+  <path d="M196 348 L252 292 L300 318 L372 210"
+        fill="none" stroke="#38BDF8" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- AI nodes -->
+  <circle cx="196" cy="348" r="18" fill="#FFFFFF"/>
+  <circle cx="252" cy="292" r="18" fill="#FFFFFF"/>
+  <circle cx="300" cy="318" r="18" fill="#FFFFFF"/>
+  <circle cx="372" cy="210" r="22" fill="#38BDF8"/>
+</svg>

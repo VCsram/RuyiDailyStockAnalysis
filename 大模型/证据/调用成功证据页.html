@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>DeepSeek V4 Pro 最小调用证据（脱敏）</title>
+  <style>
+    body { font-family: "Segoe UI", "Microsoft YaHei", sans-serif; margin: 0; background: #0f172a; color: #e2e8f0; }
+    .wrap { max-width: 860px; margin: 40px auto; padding: 28px 32px; background: #111827; border: 1px solid #334155; border-radius: 16px; }
+    h1 { margin: 0 0 8px; font-size: 28px; color: #38bdf8; }
+    .sub { color: #94a3b8; margin-bottom: 24px; }
+    .ok { display: inline-block; background: #065f46; color: #a7f3d0; padding: 6px 12px; border-radius: 999px; font-weight: 700; }
+    .grid { display: grid; grid-template-columns: 180px 1fr; gap: 10px 16px; margin-top: 22px; }
+    .k { color: #94a3b8; }
+    .v { color: #f8fafc; word-break: break-all; }
+    .box { margin-top: 24px; padding: 16px; background: #020617; border-radius: 12px; border: 1px solid #1e293b; }
+    code { color: #fde68a; }
+    .warn { margin-top: 18px; color: #fca5a5; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="ok">CALL SUCCESS</div>
+    <h1>DeepSeek V4 Pro 最小调用证据</h1>
+    <p class="sub">练习 3 · 脱敏验收页 · 不含完整 API Key</p>
+    <div class="grid">
+      <div class="k">结果</div><div class="v">成功（HTTP 正常，模型已返回）</div>
+      <div class="k">时间</div><div class="v">2026-07-17T08:51:44 → 2026-07-17T08:51:47</div>
+      <div class="k">Provider</div><div class="v">deepseek</div>
+      <div class="k">Endpoint</div><div class="v">https://api.deepseek.com/chat/completions</div>
+      <div class="k">Model</div><div class="v">deepseek-v4-pro</div>
+      <div class="k">Key 指纹</div><div class="v">sk-d...6243（len=35，已脱敏）</div>
+      <div class="k">Token</div><div class="v">prompt=25 · completion=35 · total=60</div>
+    </div>
+    <div class="box">
+      <div class="k">模型回复</div>
+      <p class="v" style="margin:8px 0 0; font-size:20px;">DeepSeek V4 Pro 最小调用成功</p>
+    </div>
+    <div class="box">
+      <div class="k">本地配置（脱敏）</div>
+      <p class="v">
+        <code>key.txt</code>（仅本地，已 gitignore）<br/>
+        <code>DEEPSEEK_API_KEY=&lt;from key.txt&gt;</code><br/>
+        <code>LITELLM_MODEL=deepseek/deepseek-v4-pro</code><br/>
+        <code>AGENT_LITELLM_MODEL=deepseek/deepseek-v4-pro</code>
+      </p>
+    </div>
+    <p class="warn">验收要求：完整 API Key 不得出现在 Git、日志、截图与文档中。</p>
+  </div>
+</body>
+</html>
